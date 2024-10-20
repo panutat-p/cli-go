@@ -2,11 +2,15 @@ version: '3'
 
 tasks:
 
-  run:
-    cmds:
-      - go run cmd/main.go
-
   lint:
     cmds:
       - go fmt ./...
       - gci write --skip-generated --skip-vendor -s standard -s default -s 'prefix(github.com/panutat-p)' -s localmodule .
+
+  help:
+    cmds:
+      - go run cmd/main.go help
+
+  hello:
+    cmds:
+      - go run cmd/main.go hello 🐵
