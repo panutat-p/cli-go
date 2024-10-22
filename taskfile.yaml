@@ -2,15 +2,21 @@ version: '3'
 
 tasks:
 
+  tidy:
+    cmds:
+      - go mod tidy
+
   lint:
     cmds:
       - go fmt ./...
       - gci write --skip-generated --skip-vendor -s standard -s default -s 'prefix(github.com/panutat-p)' -s localmodule .
 
-  help:
-    cmds:
-      - go run cmd/main.go help
-
-  hello:
+  main:
     cmds:
       - go run cmd/main.go hello 🐵
+    env:
+      MYSQL_HOST: 'localhost'
+      MYSQL_PORT: '3306'
+      MYSQL_DATABASE: 'demo'
+      MYSQL_USERNAME: 'root'
+      MYSQL_PASSWORD: '1234'
